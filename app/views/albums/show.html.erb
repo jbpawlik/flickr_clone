@@ -1,0 +1,32 @@
+<body id="albumShow">
+  <div class="container backbox">
+    <div class="row">
+      <div class="col albumImageFrame">
+        <% if @album.album_cover_photo.attached? %>
+          <%= image_tag @album.album_cover_photo %>
+        <% end %>
+        <%= image_tag("#{Faker::LoremFlickr.image(search_terms: ["#{@album.title}"])}", width: "100px", class: "albumPic") %>
+      </div>
+      <div class="col albumPage">
+        <br>
+        <h1><%= @album.title %></h1>
+        <br>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <h2><%= link_to "Edit album", edit_album_path(@album) %></h2>
+        </div>
+        <div class="col-4">
+          <h2><%= link_to "Delete", album_path(@album), :data => {:confirm => "You sure?", :method => "delete"} %></h2>
+        </div>
+        <h1 class="linkBack"><%= link_to "Return to albums", albums_path(@album) %></h1>
+      </div>
+    </div>
+  </div>
+</body>
+
+
+
+
+
+

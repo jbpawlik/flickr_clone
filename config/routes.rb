@@ -1,18 +1,15 @@
 Rails.application.routes.draw do
 
-  get '/', to:
-    'users#landing'
+  devise_for :users
+  # root to: 'albums#index'
+  root to: 'user#index'
 
-  root to: 'users/sessions#new'
-  devise_for :users, controllers: {
-    sessions: 'users/sessions'
-  }
+  # devise_scope :user do
+  #   root to: 'albums#index'
+  # end
+
+  resources :albums do
+    resources :pictures
+  end
+
 end
-
-#   devise_scope :user do
-#     root to: 'devise/registrations#new'
-#     get "signup", to: "devise/registrations#new"
-#     get "login", to: "devise/sessions#new"
-#     get "logout", to: "devise/sessions#destroy"
-#  end
-

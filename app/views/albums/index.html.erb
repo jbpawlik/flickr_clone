@@ -1,0 +1,29 @@
+<h1 id="albumsHeader">Albums</h1>
+  <% if @albums.any? %>
+    <% @albums.each_with_index do |album, index| %>
+      <% if index === 0 %>
+        <div class="row">
+          <div class="col-3 albumCard" style="background-image: url(<% "#{Faker::LoremFlickr.image(search_terms: ["#{album.title}"])}" %>)">
+            <h5 class="gridText"><%= link_to album.title, album_path(album) %></h5>
+          </div>
+      <% elsif index % 3 === 0 %>
+        </div>
+        <div class="row">
+          <div class="col-3 albumCard" style="background-image: url(<%= "#{Faker::LoremFlickr.image(search_terms: ["#{album.title}"])}"%>)">
+            <h5 class="gridText"><%= link_to album.title, album_path(album) %></h5>
+          </div>
+      <% else %>
+        <div class="col-3 albumCard" style="background-image: url(<%= "#{Faker::LoremFlickr.image(search_terms: ["#{album.title}"])}"%>)">
+          <h5 class="gridText"><%= link_to album.title, album_path(album) %></h5>
+        </div>
+      <% end %>
+    <% end %>
+    <div class="col-3" id="addNewalbum">
+      <h3 class="newalbumText"><%= link_to "Add album", new_album_path %></h3>
+    </div>
+  <% else %>
+    <h3>There are no albums yet. <%= link_to "Add album", new_album_path %></h3>
+  <% end %>
+  <%= paginate @albums %>
+</div>
+<h1 id="homeLink"><%= link_to "Back to Home", '/' %></h1>

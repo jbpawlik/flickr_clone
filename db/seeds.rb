@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# Album.destroy_all
+# ActiveRecord::Base.connection.reset_pk_sequence!(Album.table_name)
+
+Album.destroy_all
+
+50.times do |index|
+  Album.create!(title: Faker::Hipster.words(number: 1..3).join(" ")) 
+end
+
+p "Created #{Album.count} albums"
