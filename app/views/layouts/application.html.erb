@@ -10,12 +10,13 @@
   </head>
 
   <body>
-  
+  <div class ="links">
   <% if current_user %>
       <%= current_user.email %> | <%= link_to "Sign out", destroy_user_session_path, method: :delete %> | <%= link_to "Edit Account", '/users/edit' %>
     <% else %>
       <%= link_to "Sign up", '/users/sign_up' %> | <%= link_to "Sign in", '/users/sign_in' %>
     <% end %>
+  </div>
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>

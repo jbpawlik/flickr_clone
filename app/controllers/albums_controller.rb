@@ -2,6 +2,7 @@ class AlbumsController < ApplicationController
 
   def index
     @albums = Album.order(:title).page(params[:page]).per(11)
+    @pictures = Picture.all
     render :index
   end
 
@@ -12,7 +13,7 @@ class AlbumsController < ApplicationController
 
   def create
     @album = Album.new(album_params)
-    @album.album_cover_photo.attach(params[:album][:album_cover_photo])
+    @album.images.attach(params[:album][:images])
     if @album.save
       flash[:notice] = "album successfully added!"
       redirect_to albums_path
@@ -29,6 +30,9 @@ class AlbumsController < ApplicationController
 
   def show
     @album = Album.find(params[:id])
+    # # @picture = @album.pictures.new
+    # @picture = Picture.find(params[:id])
+    @pictures = Picture.all
     render :show
   end
 
@@ -49,8 +53,18 @@ class AlbumsController < ApplicationController
     redirect_to albums_path
   end
 
+  def favorite!
+    self.favorite = true
+    self.save!
+  end 
+
+  def unfavorite!
+    self.favorite = false
+    self.save!
+  end 
+
   private
     def album_params
-      params.require(:album).permit(:title)
+      params.require(:album).permit(:title, images: [], :favorite)
     end
 end

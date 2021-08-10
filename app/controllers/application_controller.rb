@@ -3,14 +3,9 @@ class ApplicationController < ActionController::Base
 
   before_action :authenticate_user!
 
-  protected
+  # protected
 
   def after_sign_in_path_for(resource)
-    if current_user.is_a?(user)
     albums_path
-    else
-      ("You are not signed in")
-      user_path
-    end 
   end
 end

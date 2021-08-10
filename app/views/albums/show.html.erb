@@ -2,17 +2,27 @@
   <div class="container backbox">
     <div class="row">
       <div class="col albumImageFrame">
-        <% if @album.album_cover_photo.attached? %>
-          <%= image_tag @album.album_cover_photo %>
-        <% end %>
-        <%= image_tag("#{Faker::LoremFlickr.image(search_terms: ["#{@album.title}"])}", width: "100px", class: "albumPic") %>
+        <%# image_tag("#{Faker::LoremFlickr.image(search_terms: ["#{@album.title}"])}", width: "100px", class: "albumPic") %>
       </div>
       <div class="col albumPage">
         <br>
         <h1><%= @album.title %></h1>
         <br>
+        <% if @album.pictures.any? %>
+          <h4>Pictures:</h4>
+          <% @album.pictures.each do |picture| %>
+                <% if picture.image.attached? %>
+                  <%= image_tag(picture.image, width: "300em") %>
+                <% end %>
+          <% end %>
+        <% else %>
+          <h2>No pictures are listed for this album.</h2>
+        <% end %>
       </div>
       <div class="row">
+      <div class="col-4">
+          <h2><%= link_to "Add Picture", new_album_picture_path(@album) %></h2>
+        </div>
         <div class="col-4">
           <h2><%= link_to "Edit album", edit_album_path(@album) %></h2>
         </div>
