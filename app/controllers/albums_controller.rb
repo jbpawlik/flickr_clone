@@ -53,9 +53,9 @@ class AlbumsController < ApplicationController
     redirect_to albums_path
   end
 
-  def favorite!
-    self.favorite = true
-    self.save!
+  def like
+    @favorite = Album.favorite = true
+    @favorite.save!
   end 
 
   def unfavorite!
@@ -65,6 +65,6 @@ class AlbumsController < ApplicationController
 
   private
     def album_params
-      params.require(:album).permit(:title, images: [], :favorite)
+      params.require(:album).permit(:title, :favorite, images: [])
     end
 end
