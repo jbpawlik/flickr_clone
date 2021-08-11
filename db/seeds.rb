@@ -11,8 +11,8 @@
 
 Album.destroy_all
 
-50.times do |index|
-  Album.create!(title: Faker::Verb.base)
-end
+# 50.times do |index|
+#   Album.create!(title: Faker::Verb.base)
+# end
 
-p "Created #{Album.count} albums"
+# p "Created #{Album.count} albums"

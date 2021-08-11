@@ -2,7 +2,8 @@ class AlbumsController < ApplicationController
 
   def index
     # @user = User.find(params[:id])
-    @albums = Album.order(:title).page(params[:page]).per(11)
+    @albums = current_user.albums.page(params[:page]).per(11)
+    # @albums = Album.order(:title).page(params[:page]).per(11)
     @pictures = Picture.all
     render :index
   end
@@ -16,8 +17,7 @@ class AlbumsController < ApplicationController
   def create
     # User.all
     @album = current_user.albums.new(album_params)
-    @album.images.attach(params[:album][:images])
-    binding.pry
+    # @album.images.attach(params[:album][:images])
     if @album.save
       flash[:notice] = "album successfully added!"
       redirect_to albums_path

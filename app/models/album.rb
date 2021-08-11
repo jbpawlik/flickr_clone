@@ -1,5 +1,5 @@
 class Album < ApplicationRecord
-  # belongs_to :user
+  belongs_to :user
   has_many :pictures
   has_many_attached :images
   validates :title, presence: true
