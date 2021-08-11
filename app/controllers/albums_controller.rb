@@ -1,7 +1,7 @@
 class AlbumsController < ApplicationController
 
   def index
-    # @user = User.find(params[:id])
+    @users = User.all
     @albums = current_user.albums.page(params[:page]).per(11)
     # @albums = Album.order(:title).page(params[:page]).per(11)
     @pictures = Picture.all
@@ -58,13 +58,14 @@ class AlbumsController < ApplicationController
   end
 
   def like
-    @favorite = Album.favorite = true
-    @favorite.save!
+    self.favorite = true
+    self.save!
   end 
 
-  def unfavorite!
-    self.favorite = false
-    self.save!
+  def unlike
+    @album = Album.find(params[:id])
+    @album.favorite = false
+    @album.save!
   end 
 
   private

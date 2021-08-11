@@ -25,4 +25,7 @@
     <h3>There are no albums yet. <%= link_to "Add album", new_album_path %></h3>
   <% end %>
   <%= paginate @albums %>
+  <% @users.each do |user| %>
+    <p><%= link_to user.email %></p>
+  <% end %>
 </div>

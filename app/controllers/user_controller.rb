@@ -15,4 +15,4 @@ class UserController < ApplicationController
 #       redirect_to root_path, notice: "Sorry, but you are only allowed to view your own profile page."
 #     end
 #   end
-# end
+end
