@@ -12,7 +12,7 @@
 Album.destroy_all
 
 50.times do |index|
-  Album.create!(title: Faker::Hipster.words(number: 1..3).join(" ")) 
+  Album.create!(title: Faker::Verb.base)
 end
 
 p "Created #{Album.count} albums"

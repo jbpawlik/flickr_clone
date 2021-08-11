@@ -1,0 +1,9 @@
+<body id="editAlbum">
+  <div class="container backbox">
+    <h1 id="newAlbumHeader">Rename Album</h1>
+    <br>
+    <%= render "layouts/album_form", :object => @album %>
+    <br>
+    <h1 class="linkBack"><%= link_to "Return to Album", album_path(@album) %></h1>
+  </div>
+</body>

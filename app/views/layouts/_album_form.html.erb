@@ -2,8 +2,5 @@
 
 <h2><%= form_for [@album] do |f| %>
   <%= f.text_field :title, class: "form-control" %>
-  <%= f.label :title, class: "formLabel" %>
-  <br>
-  <%= f.file_field :album_cover_photo %>
   <span id="newAlbumSubmit"><%= f.submit %></span>
 <% end %></h2>

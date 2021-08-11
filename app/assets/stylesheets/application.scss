@@ -74,7 +74,7 @@ body {
     color: black;
     }
 }
-#albumsHeader {
+#albumsHeader, .albumHeader {
   background-color: rgba(255, 235, 205, 0.836);
   color: black;
   border: 20px double black;
@@ -94,11 +94,43 @@ body {
 a:hover {
   color:rgb(141, 28, 28)
 }
-
-// .links{
-//   color: black;
-// }
-
-.form{
+#albumLink, #homeLink, .linkBack {
+  a {
+    text-decoration: underline;
+    color: black;
+    }
   text-align: center;
+  a:hover {
+    color:rgb(141, 28, 28)
+  }
+}
+.form {
+  text-align: center;
+}
+.albumPics {
+  text-align: center;
+  display: inline-flex;
+  flex-direction: column;
+  border: none;
+  margin: .5em;
+  margin-left: 4%;
+  margin-right: 4%;
+}
+.albumPic {
+  max-height: 8em;
+  object-fit: cover;
+}
+// .albumPic:hover {
+//   height: 20em;
+//   width: 20em;
+// }
+.deleteLink {
+  background-color: black;
+}
+.col-4 {
+  text-align: center;
+  a {
+    text-decoration: underline;
+    color: black;
+  }
 }

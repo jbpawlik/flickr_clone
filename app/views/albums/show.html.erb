@@ -3,21 +3,17 @@
     <div class="row">
       <div class="col albumPage">
         <br>
-        <h1><%= @album.title %></h1>
+        <h1 class="albumHeader"><%= @album.title %></h1>
         <br>
         <% if @album.pictures.any? %>
-          <h4>Pictures:</h4>
           <div class="row">
           <% @album.pictures.each do |picture| %>
-            
-              <% if picture.image.attached? %>
-                <div class="col">
-                  <%= image_tag(picture.image, width: "300em") %>
-                  <br>
-                  <%= link_to "Delete", album_path(@album), :data => {:confirm => "You sure?", :method => "delete"} %>
-                  </div>
-                <% end %>
-    
+            <% if picture.image.attached? %>
+              <div class="col-3 albumPics">
+                <%= image_tag(picture.image, class: "albumPic")  %>
+                <%= link_to "Delete", album_path(@album), :data => {:confirm => "You sure?", :method => "delete"}, class: "deleteLink" %>
+              </div>
+            <% end %>
           <% end %>
           </div>
         <% else %>
@@ -25,15 +21,19 @@
         <% end %>
       </div>
       <div class="row">
-      <div class="col-4">
+        <br>
+        <br>
+        <div class="col-4">
           <h2><%= link_to "Add Picture", new_album_picture_path(@album) %></h2>
         </div>
         <div class="col-4">
-          <h2><%= link_to "Edit album", edit_album_path(@album) %></h2>
+          <h2><%= link_to "Edit Album", edit_album_path(@album) %></h2>
         </div>
         <div class="col-4">
-          <h2><%= link_to "Delete", album_path(@album), :data => {:confirm => "You sure?", :method => "delete"} %></h2>
+          <h2><%= link_to "Delete Album", album_path(@album), :data => {:confirm => "You sure?", :method => "delete"} %></h2>
         </div>
+        <br>
+        <br>
         <h1 class="linkBack"><%= link_to "Return to albums", albums_path(@album) %></h1>
       </div>
     </div>
